@@ -38,11 +38,6 @@
             bindings = <&kp CAPS>;
             key-positions = <10 11>;
         };
-
-        Left1 {
-            bindings = <&kp TILDE>;
-            key-positions = <1 2>;
-        };
     };
 
     macros {
@@ -88,8 +83,8 @@
             bindings = <
 &kp Q           &kp W             &kp E         &kp R                    &kp T                                                                   &kp Y        &kp U  &kp I      &kp O    &lt 5 P
 &kp A           &kp S             &kp D         &kp F                    &kp G                                       &kp LEFT_BRACKET            &kp H        &kp J  &kp K      &kp L    &kp MINUS
-&kp Z           &kp X             &kp C         &kp V                    &kp B             &kp F14                   &kp RIGHT_BRACKET           &kp N        &kp M  &kp COMMA  &kp DOT  &kp SLASH
-&kp LEFT_SHIFT  &kp LEFT_CONTROL  &kp LEFT_ALT  &mt LEFT_GUI LANGUAGE_1  &lt 1 LANGUAGE_2  &lt_to_layer_0 2 SPACE    &lt_to_layer_0 3 BACKSPACE  &lt 6 ENTER                             &lt 5 SEMICOLON
+&kp Z           &kp X             &kp C         &kp V                    &kp B             &none                     &kp RIGHT_BRACKET           &kp N        &kp M  &kp COMMA  &kp DOT  &kp SLASH
+&kp LEFT_SHIFT  &kp LEFT_CONTROL  &kp LEFT_ALT  &mt LEFT_GUI LANGUAGE_2  &lt 1 LANGUAGE_1  &lt_to_layer_0 2 SPACE    &lt_to_layer_0 3 BACKSPACE  &lt 6 ENTER                             &lt 5 SEMICOLON
             >;
 
             sensor-bindings = <&scroll_up_down>;
