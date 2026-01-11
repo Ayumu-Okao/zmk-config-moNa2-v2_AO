@@ -26,17 +26,17 @@
 
         ESCAP {
             bindings = <&kp ESCAPE>;
-            key-positions = <3 4>;
+            key-positions = <0 1>;
         };
 
         tab {
             bindings = <&kp TAB>;
-            key-positions = <0 1>;
+            key-positions = <10 11>;
         };
 
         CAP {
             bindings = <&kp CAPS>;
-            key-positions = <10 11>;
+            key-positions = <21 22>;
         };
 
         Mouse_Vertical {
