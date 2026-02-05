@@ -85,34 +85,11 @@
         };
     };
 
-    /* トラックボールの挙動設定（Input Processor） */
-    // 右手側・左手側どちらのビルドでもエラーにならないように、
-    // それぞれのラベルに対して設定を記述します。
-    
-    &trackball_central {
-        status = "okay";
-    };
-
-    &trackball_peripheral {
-        status = "okay";
-    };
-
+    // トラックボールの挙動設定
+    // trackball_central(右手)またはtrackball_peripheral(左手)のどちらかがある場合に適用
     trackball_listener: trackball_listener {
         compatible = "zmk,input-listener";
-        device = <&trackball_central>; // 親機側のデバイス名
-
-        input-processors = <&zip_temp_layer 5 600>;
-
-        scroller {
-            layers = <1>;
-            input-processors = <&zip_xy_to_scroll_mapper>;
-        };
-    };
-
-    // 分離型で左手側にボールがある場合のための設定
-    trackball_peripheral_listener: trackball_peripheral_listener {
-        compatible = "zmk,input-listener";
-        device = <&trackball_peripheral>; // 子機側のデバイス名
+        device = <&trackball_central>;
 
         input-processors = <&zip_temp_layer 5 600>;
 
@@ -193,4 +170,13 @@
 
         layer_6_BT {
             bindings = <
-&trans  &trans  &trans  &trans  &trans                    &bt BT_SEL 0  &bt BT_SEL 1
+&trans  &trans  &trans  &trans  &trans                    &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_SEL 4
+&trans  &trans        &trans        &trans        &trans        &trans        &trans  &trans  &trans  &trans  &bt BT_CLR
+&trans  &trans        &trans        &trans        &trans        &trans        &trans  &trans  &trans  &trans  &bt BT_CLR_ALL
+&trans  &trans        &trans        &trans        &trans        &trans        &trans  &trans                                                  &trans
+            >;
+
+            sensor-bindings = <&scroll_up_down>;
+        };
+    };
+};
