@@ -20,13 +20,6 @@
 };
 
 / {
-    /* センサー（エンコーダー）の定義 */
-    sensors {
-        compatible = "zmk,keymap-sensors";
-        sensors = <&left_encoder &right_encoder>;
-        triggers-per-rotation = <20>;
-    };
-
     combos {
         compatible = "zmk,combos";
         ESCAP { bindings = <&kp ESCAPE>; key-positions = <0 1>; };
@@ -61,6 +54,7 @@
     };
 
     /* トラックボールのオートマウス・スクロール設定 */
+    /* deviceラベルはビルドエラー回避のため、存在する可能性のあるものを記述 */
     trackball_listener: trackball_listener {
         compatible = "zmk,input-listener";
         device = <&trackball_central>;
