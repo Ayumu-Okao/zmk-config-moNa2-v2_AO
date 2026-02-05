@@ -54,7 +54,8 @@
     };
 
     /* トラックボールのオートマウス・スクロール設定 */
-    /* deviceラベルはビルドエラー回避のため、存在する可能性のあるものを記述 */
+    /* 右手側(mona2_r)のビルド時のみ trackball_central への参照を有効にする */
+    #if DT_NODE_EXISTS(DT_NODELABEL(trackball_central))
     trackball_listener: trackball_listener {
         compatible = "zmk,input-listener";
         device = <&trackball_central>;
@@ -64,6 +65,7 @@
             input-processors = <&zip_xy_to_scroll_mapper>;
         };
     };
+    #endif
 
     keymap {
         compatible = "zmk,keymap";
