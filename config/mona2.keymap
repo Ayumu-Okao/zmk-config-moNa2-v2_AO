@@ -9,6 +9,15 @@
 #define MOUSE 5
 #define SCROLL 6
 
+/* * ダミー定義：左手(mona2_l)ビルド時に「trackball_centralがない」というエラーを防ぎます。
+ * 右手ビルド時は、基板側の定義が優先されるか上書きされるため問題ありません。
+ */
+/ {
+    trackball_central: trackball_central {
+        status = "disabled";
+    };
+};
+
 &mt {
     flavor = "balanced";
     quick-tap-ms = <0>;
@@ -54,8 +63,6 @@
     };
 
     /* トラックボールのオートマウス・スクロール設定 */
-    /* 右手側(mona2_r)のビルド時のみ trackball_central への参照を有効にする */
-    #if DT_NODE_EXISTS(DT_NODELABEL(trackball_central))
     trackball_listener: trackball_listener {
         compatible = "zmk,input-listener";
         device = <&trackball_central>;
@@ -65,7 +72,6 @@
             input-processors = <&zip_xy_to_scroll_mapper>;
         };
     };
-    #endif
 
     keymap {
         compatible = "zmk,keymap";
