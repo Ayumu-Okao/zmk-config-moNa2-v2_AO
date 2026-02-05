@@ -85,19 +85,32 @@
         };
     };
 
-    // トラックボールの挙動設定
-    // trackball_central(右手)またはtrackball_peripheral(左手)のどちらかがある場合に適用
+    // 【修正ポイント】
+    // 右手側(trackball_central)が存在する場合のみ設定を適用する
+    #ifdef TBC_NODE
     trackball_listener: trackball_listener {
         compatible = "zmk,input-listener";
         device = <&trackball_central>;
-
         input-processors = <&zip_temp_layer 5 600>;
-
         scroller {
             layers = <1>;
             input-processors = <&zip_xy_to_scroll_mapper>;
         };
     };
+    #endif
+
+    // 左手側(trackball_peripheral)が存在する場合のみ設定を適用する
+    #ifdef TBP_NODE
+    trackball_peripheral_listener: trackball_peripheral_listener {
+        compatible = "zmk,input-listener";
+        device = <&trackball_peripheral>;
+        input-processors = <&zip_temp_layer 5 600>;
+        scroller {
+            layers = <1>;
+            input-processors = <&zip_xy_to_scroll_mapper>;
+        };
+    };
+    #endif
 
     keymap {
         compatible = "zmk,keymap";
