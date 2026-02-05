@@ -9,15 +9,12 @@
 #define MOUSE 5
 #define SCROLL 6
 
-/* * 既存の trackball_central ラベルがある前提で設定を流し込みます。
- * これにより二重定義エラーを回避しつつ、オートマウス機能を有効にします。
+/* * 左右のビルドを共存させるための「おまじない」
  */
-&trackball_central {
-    status = "okay";
-};
-
 / {
-    trackball_listener: trackball_listener {
+    // 右手(R)ビルド時に既存のtrackball_centralを上書きせず、
+    // 左手(L)ビルド時にはじめて「空の定義」として機能するようにします。
+    trackball_peripheral: trackball_peripheral {
         compatible = "zmk,input-listener";
         device = <&trackball_central>;
         input-processors = <&zip_temp_layer 5 600>;
@@ -26,7 +23,25 @@
             input-processors = <&zip_xy_to_scroll_mapper>;
         };
     };
+};
 
+/* * 万が一L側で trackball_central が見つからないと言われるのを防ぐための最小限の定義
+ */
+#ifndef trackball_central
+/ { trackball_central: trackball_central { status = "disabled"; }; };
+#endif
+
+&mt {
+    flavor = "balanced";
+    quick-tap-ms = <0>;
+};
+
+&lt {
+    quick-tap-ms = <300>;
+    flavor = "balanced";
+};
+
+/ {
     combos {
         compatible = "zmk,combos";
         ESCAP { bindings = <&kp ESCAPE>; key-positions = <0 1>; };
