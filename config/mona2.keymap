@@ -11,25 +11,23 @@
 
 / {
     /* --- Auto Mouse Layer (AML) 設定 --- */
-    
-    /* トラックボールを動かした時にレイヤー5へ (1000ms維持) */
+    #if DT_NODE_EXISTS(DT_NODELABEL(trackball_central))
     trackball_listener {
         compatible = "zmk,input-listener";
         device = <&trackball_central>;
         input-processors = <&zip_temp_layer MOUSE 1000>;
     };
 
-    /* クリックした時もレイヤー5の状態を1000ms延長 */
     mkp_input_listener: mkp_input_listener {
         compatible = "zmk,input-listener";
         device = <&trackball_central>;
         input-processors = <&zip_temp_layer MOUSE 1000>;
     };
+    #endif
 
-    /* L側ビルド時のエラー回避用ダミー定義 */
-    trackball_central: trackball_central {
-        status = "disabled";
-    };
+    #ifndef trackball_central
+    trackball_central: trackball_central { status = "disabled"; };
+    #endif
 
     combos {
         compatible = "zmk,combos";
@@ -48,12 +46,23 @@
     };
 
     behaviors {
+        /* レイヤー5(Pキー)専用の高速設定 */
+        lt5: layer_tap_5 {
+            compatible = "zmk,behavior-hold-tap";
+            label = "LAYER_TAP_5";
+            #binding-cells = <2>;
+            flavor = "balanced";
+            tapping-term-ms = <100>; // ここだけ100ms
+            quick-tap-ms = <200>;
+            bindings = <&mo>, <&kp>;
+        };
+
         lt_to_layer_0: lt_to_layer_0 {
             compatible = "zmk,behavior-hold-tap";
             label = "LAYER_TAP_TO_0";
             bindings = <&mo>, <&to_layer_0>;
             #binding-cells = <2>;
-            tapping-term-ms = <200>;
+            tapping-term-ms = <200>; // 他は200msのまま
         };
 
         scroll_up_down: mouse_wheel_up_down {
@@ -68,7 +77,7 @@
         compatible = "zmk,keymap";
         default_layer {
             bindings = <
-&kp Q                         &kp W             &kp E             &kp R                    &kp T                                                                                    &kp Y        &kp U  &kp I      &kp O    &lt 5 P
+&kp Q                         &kp W             &kp E             &kp R                    &kp T                                                                                    &kp Y        &kp U  &kp I      &kp O    &lt5 5 P
 &kp A                         &kp S             &kp D             &kp F                    &kp G                                                       &lt 6 LEFT_BRACKET           &kp H        &kp J  &kp K      &kp L    &kp MINUS
 &kp Z                         &kp X             &kp C             &kp V                    &kp B             &kp TAB                    &kp RIGHT_BRACKET            &kp N        &kp M  &kp COMMA  &kp DOT  &kp SLASH
 &mt LEFT_SHIFT LC(LG(SPACE))  &kp LEFT_CONTROL  &kp LEFT_ALT  &mt LEFT_GUI LANGUAGE_2  &lt 1 LANGUAGE_1  &lt_to_layer_0 2 SPACE    &lt_to_layer_0 3 BACKSPACE  &lt 4 ENTER                             &kp SEMICOLON
