@@ -45,24 +45,25 @@
         };
     };
 
-    behaviors {
+behaviors {
         /* レイヤー5(Pキー)専用の高速設定 */
         lt5: layer_tap_5 {
             compatible = "zmk,behavior-hold-tap";
             label = "LAYER_TAP_5";
             #binding-cells = <2>;
             flavor = "balanced";
-            tapping-term-ms = <100>; // ここだけ100ms
+            tapping-term-ms = <100>; 
             quick-tap-ms = <200>;
             bindings = <&mo>, <&kp>;
         };
 
+        /* 親指用（ここは元のまま200ms） */
         lt_to_layer_0: lt_to_layer_0 {
             compatible = "zmk,behavior-hold-tap";
             label = "LAYER_TAP_TO_0";
             bindings = <&mo>, <&to_layer_0>;
             #binding-cells = <2>;
-            tapping-term-ms = <200>; // 他は200msのまま
+            tapping-term-ms = <200>;
         };
 
         scroll_up_down: mouse_wheel_up_down {
