@@ -9,39 +9,28 @@
 #define MOUSE 5
 #define SCROLL 6
 
-/* * 左右のビルドを共存させるための「おまじない」
- */
 / {
-    // 右手(R)ビルド時に既存のtrackball_centralを上書きせず、
-    // 左手(L)ビルド時にはじめて「空の定義」として機能するようにします。
-    trackball_peripheral: trackball_peripheral {
+    /* --- Auto Mouse Layer (AML) 設定 --- */
+    
+    /* トラックボールを動かした時にレイヤー5へ (1000ms維持) */
+    trackball_listener {
         compatible = "zmk,input-listener";
         device = <&trackball_central>;
-        input-processors = <&zip_temp_layer 5 600>;
-        scroller {
-            layers = <1>;
-            input-processors = <&zip_xy_to_scroll_mapper>;
-        };
+        input-processors = <&zip_temp_layer MOUSE 1000>;
     };
-};
 
-/* * 万が一L側で trackball_central が見つからないと言われるのを防ぐための最小限の定義
- */
-#ifndef trackball_central
-/ { trackball_central: trackball_central { status = "disabled"; }; };
-#endif
+    /* クリックした時もレイヤー5の状態を1000ms延長 */
+    mkp_input_listener: mkp_input_listener {
+        compatible = "zmk,input-listener";
+        device = <&trackball_central>;
+        input-processors = <&zip_temp_layer MOUSE 1000>;
+    };
 
-&mt {
-    flavor = "balanced";
-    quick-tap-ms = <0>;
-};
+    /* L側ビルド時のエラー回避用ダミー定義 */
+    trackball_central: trackball_central {
+        status = "disabled";
+    };
 
-&lt {
-    quick-tap-ms = <300>;
-    flavor = "balanced";
-};
-
-/ {
     combos {
         compatible = "zmk,combos";
         ESCAP { bindings = <&kp ESCAPE>; key-positions = <0 1>; };
