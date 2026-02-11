@@ -61,7 +61,7 @@
         br_mac: br_mac {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&bt BT_SEL 0 &to 0>, <&macro_press>;
+            bindings = <&bt BT_SEL 0>, <&macro_wait_time 20>, <&to 0>;
 
             label = "BR_MAC";
         };
@@ -69,21 +69,24 @@
         bt_win: bt_win {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&bt BT_SEL 1 &to 1>;
+            bindings = <&bt BT_SEL 1>, <&macro_wait_time 20>, <&to 1>;
+
             label = "BT_WIN";
         };
 
         bt_ipad: bt_ipad {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&bt BT_SEL 2 &to 2>;
+            bindings = <&bt BT_SEL 2>, <&macro_wait_time 20>, <&to 2>;
+
             label = "BT_IPAD";
         };
 
         bt_android: bt_android {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&bt BT_SEL 3 &to 3>;
+            bindings = <&bt BT_SEL 3>, <&macro_wait_time 20>, <&to 3>;
+
             label = "BT_ANDROID";
         };
     };
