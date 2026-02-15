@@ -10,8 +10,8 @@ manifest:
       url-base: https://github.com/caksoylar  
     - name: zettaface  # <-- Input Processor Keybind
       url-base: https://github.com/zettaface
-    - name: urob       # <-- Helpers (AML用)
-      url-base: https://github.com/urob
+    - name: moergo-sc  # <-- 追加
+      url-base: https://github.com/moergo-sc
   projects:
     - name: zmk
       remote: zmkfirmware
@@ -26,8 +26,9 @@ manifest:
     - name: zmk-input-processor-keybind
       remote: zettaface
       revision: main
-    - name: zmk-helpers # <-- これが zip_temp_layer を提供します
-      remote: urob
+    # ★こちらを urob ではなく moergo-sc に差し替えます
+    - name: zmk-input-behavior-listener
+      remote: moergo-sc
       revision: main
   self:
     path: config
