@@ -10,8 +10,6 @@ manifest:
       url-base: https://github.com/caksoylar  
     - name: zettaface  # <-- Input Processor Keybind
       url-base: https://github.com/zettaface
-    - name: moergo-sc  # <-- 追加
-      url-base: https://github.com/moergo-sc
   projects:
     - name: zmk
       remote: zmkfirmware
@@ -26,9 +24,9 @@ manifest:
     - name: zmk-input-processor-keybind
       remote: zettaface
       revision: main
-    # ★こちらを urob ではなく moergo-sc に差し替えます
+    # ★ここを badjeff 版に変更（認証エラー回避）
     - name: zmk-input-behavior-listener
-      remote: moergo-sc
+      remote: badjeff
       revision: main
   self:
     path: config
