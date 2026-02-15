@@ -11,13 +11,12 @@
 #define ZMK_POINTING_DEFAULT_SCRL_VAL 100
 
 / {
-    /* 修正版：moergo-sc のモジュールを使用する書き方 */
+    /* badjeff版リスナー：v0.3.0 互換設定 */
     #if EXPOSE_MMK
     trackball_listener {
-        compatible = "zmk,input-behavior-listener"; // compatibleを変更
+        compatible = "zmk,input-listener";
         device = <&trackball_central>;
-        layers = <5>;      // 飛ぶレイヤー
-        timeout-ms = <1000>; // 維持時間
+        input-processors = <&zip_temp_layer 5 1000>;
     };
     #endif
 
