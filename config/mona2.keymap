@@ -21,6 +21,15 @@
 };
 
 / {
+    /* ★AML（オートマウス）の設定：ボールを動かすとレイヤー5へ */
+    #if EXPOSE_MMK
+    trackball_listener {
+        compatible = "zmk,input-listener";
+        device = <&trackball_central>; // あなたのoverlayの名称
+        input-processors = <&zip_temp_layer 5 1000>; // 1000ms間レイヤー5を維持
+    };
+    #endif
+
     combos {
         compatible = "zmk,combos";
 
@@ -62,7 +71,6 @@
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
             bindings = <&bt BT_SEL 0>, <&macro_wait_time 20>, <&to 0>;
-
             label = "BR_MAC";
         };
 
@@ -70,7 +78,6 @@
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
             bindings = <&bt BT_SEL 1>, <&macro_wait_time 20>, <&to 1>;
-
             label = "BT_WIN";
         };
 
@@ -78,7 +85,6 @@
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
             bindings = <&bt BT_SEL 2>, <&macro_wait_time 20>, <&to 2>;
-
             label = "BT_IPAD";
         };
 
@@ -86,14 +92,11 @@
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
             bindings = <&bt BT_SEL 3>, <&macro_wait_time 20>, <&to 3>;
-
             label = "BT_ANDROID";
         };
     };
 
     behaviors {
-        /* レイヤー5(Pキー)専用：100msで反応する設定を追加 */
-
         lt5: layer_tap_5 {
             compatible = "zmk,behavior-hold-tap";
             label = "LAYER_TAP_5";
@@ -108,7 +111,6 @@
             compatible = "zmk,behavior-hold-tap";
             label = "LAYER_TAP_TO_0";
             bindings = <&mo>, <&to_layer_0>;
-
             #binding-cells = <2>;
             tapping-term-ms = <200>;
         };
@@ -117,7 +119,6 @@
             compatible = "zmk,behavior-sensor-rotate";
             #sensor-binding-cells = <0>;
             bindings = <&msc SCRL_DOWN>, <&msc SCRL_UP>;
-
             tap-ms = <20>;
         };
 
@@ -125,7 +126,6 @@
             compatible = "zmk,behavior-sensor-rotate";
             #sensor-binding-cells = <0>;
             bindings = <&msc SCRL_LEFT>, <&msc SCRL_RIGHT>;
-
             tap-ms = <20>;
         };
     };
