@@ -6,27 +6,18 @@
 #include <dt-bindings/zmk/keys.h>
 #include <dt-bindings/zmk/pointing.h>
 
+/* もし重複エラーが出る場合は、さっきの warning 通り 100 ではなく 10 にしてみてください */
+#undef ZMK_POINTING_DEFAULT_SCRL_VAL
 #define ZMK_POINTING_DEFAULT_SCRL_VAL 100
-#define MOUSE 5
-#define SCROLL 6
-
-&mt {
-    flavor = "balanced";
-    quick-tap-ms = <0>;
-};
-
-&lt {
-    quick-tap-ms = <300>;
-    flavor = "balanced";
-};
 
 / {
-    /* ★AML（オートマウス）の設定：ボールを動かすとレイヤー5へ */
+    /* 修正版：moergo-sc のモジュールを使用する書き方 */
     #if EXPOSE_MMK
     trackball_listener {
-        compatible = "zmk,input-listener";
-        device = <&trackball_central>; // あなたのoverlayの名称
-        input-processors = <&zip_temp_layer 5 1000>; // 1000ms間レイヤー5を維持
+        compatible = "zmk,input-behavior-listener"; // compatibleを変更
+        device = <&trackball_central>;
+        layers = <5>;      // 飛ぶレイヤー
+        timeout-ms = <1000>; // 維持時間
     };
     #endif
 
