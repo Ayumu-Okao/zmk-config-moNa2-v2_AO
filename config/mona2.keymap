@@ -6,18 +6,18 @@
 #include <dt-bindings/zmk/keys.h>
 #include <dt-bindings/zmk/pointing.h>
 
-/* スクロール量の設定 */
+/* スクロール量の調整 */
 #undef ZMK_POINTING_DEFAULT_SCRL_VAL
 #define ZMK_POINTING_DEFAULT_SCRL_VAL 100
 
-/* 重要：トラックボールがある右手ビルドの時だけ設定を有効にする */
+/* 右手（トラックボールあり）専用の設定 */
 #ifdef KEYMAP_DRAWS_PPMW3610
 &trackball_central {
     automouse-layer = <5>;
 };
 
 / {
-    /* badjeff版リスナー：オートマウスの挙動を制御 */
+    /* オートマウスの挙動を監視するリスナー */
     trackball_listener {
         compatible = "zmk,input-listener";
         device = <&trackball_central>;
