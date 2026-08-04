@@ -7,13 +7,6 @@
 #undef ZMK_POINTING_DEFAULT_SCRL_VAL
 #define ZMK_POINTING_DEFAULT_SCRL_VAL 100
 
-/* トラックボールがある右手側のみ有効にする設定 */
-#ifdef KEYMAP_DRAWS_PPMW3610
-&trackball_central {
-    automouse-layer = <5>;
-};
-#endif
-
 / {
     combos {
         compatible = "zmk,combos";
