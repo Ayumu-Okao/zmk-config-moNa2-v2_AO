@@ -10,6 +10,7 @@
 &mt {
     flavor = "balanced";
     quick-tap-ms = <0>;
+    tapping-term-ms = <250>;
 };
 
 &lt {
@@ -69,11 +70,6 @@
             bindings = <&mkp MB5>;
             key-positions = <7 8>;
         };
-
-        layer6 {
-            bindings = <&mo 6>;
-            key-positions = <8 9>;
-        };
     };
 
     macros {
@@ -109,10 +105,10 @@
 
         default_layer_mac {
             bindings = <
-&kp Q                         &kp W             &kp E         &kp R               &kp T                                           &kp Y        &kp U  &kp I      &kp O    &kp P
+&kp Q                         &kp W             &kp E         &kp R               &kp T                                           &kp Y        &kp U  &kp I      &lt 6 O  &lt 8 P
 &kp A                         &kp S             &kp D         &kp F               &kp G                       &lt 7 LEFT_BRACKET  &kp H        &kp J  &kp K      &kp L    &kp MINUS
 &mt LEFT_SHIFT Z              &kp X             &kp C         &kp V               &lt 7 B      &kp GRAVE      &kp RIGHT_BRACKET   &kp N        &kp M  &kp COMMA  &kp DOT  &mt RIGHT_SHIFT SLASH
-&mt LEFT_SHIFT LC(LG(SPACE))  &kp LEFT_CONTROL  &kp LEFT_ALT  &mt LEFT_GUI LANG2  &lt 2 LANG1  &lt 3 SPACE    &lt 4 BACKSPACE     &lt 5 ENTER                             &lt 8 SEMICOLON
+&mt LEFT_SHIFT LC(LG(SPACE))  &kp LEFT_CONTROL  &kp LEFT_ALT  &mt LEFT_GUI LANG2  &lt 2 LANG1  &lt 3 SPACE    &lt 4 BACKSPACE     &lt 5 ENTER                             &kp SEMICOLON
             >;
 
             sensor-bindings = <&inc_dec_kp LEFT RIGHT>;
@@ -120,10 +116,10 @@
 
         layer_1_win {
             bindings = <
-&kp Q             &kp W           &kp E         &kp R               &kp T                                           &kp Y        &kp U  &kp I      &kp O    &kp P
+&kp Q             &kp W           &kp E         &kp R               &kp T                                           &kp Y        &kp U  &kp I      &lt 6 O  &lt 8 P
 &kp A             &kp S           &kp D         &kp F               &kp G                       &lt 7 LEFT_BRACKET  &kp H        &kp J  &kp K      &kp L    &kp MINUS
 &mt LEFT_SHIFT Z  &kp X           &kp C         &kp V               &lt 7 B      &kp GRAVE      &kp RIGHT_BRACKET   &kp N        &kp M  &kp COMMA  &kp DOT  &mt RIGHT_SHIFT SLASH
-&kp LEFT_CONTROL  &kp LEFT_SHIFT  &kp LEFT_GUI  &mt LEFT_ALT LANG2  &lt 2 LANG1  &lt 3 SPACE    &lt 4 BACKSPACE     &lt 5 ENTER                             &lt 6 SEMICOLON
+&kp LEFT_CONTROL  &kp LEFT_SHIFT  &kp LEFT_GUI  &mt LEFT_ALT LANG2  &lt 2 LANG1  &lt 3 SPACE    &lt 4 BACKSPACE     &lt 5 ENTER                             &kp SEMICOLON
             >;
 
             sensor-bindings = <&inc_dec_kp LEFT RIGHT>;
