@@ -164,7 +164,16 @@
             sensor-bindings = <&scroll_up_down>;
         };
 
-        layer_8_BallSlow {
+        layer_8_MouseSlow {
+            bindings = <
+&trans  &trans  &trans  &trans  &trans                    &trans  &trans  &mkp MB4  &mkp MB5  &trans
+&trans  &trans  &trans  &trans  &trans            &trans  &trans  &trans  &mkp MB1  &mkp MB2  &trans
+&trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans  &mkp MB3  &trans    &trans
+&trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans                              &trans
+            >;
+        };
+
+        layer_9_Mouse {
             bindings = <
 &trans  &trans  &trans  &trans  &trans                    &trans  &trans  &mkp MB4  &mkp MB5  &trans
 &trans  &trans  &trans  &trans  &trans            &trans  &trans  &trans  &mkp MB1  &mkp MB2  &trans
