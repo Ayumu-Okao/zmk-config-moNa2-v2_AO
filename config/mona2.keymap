@@ -171,6 +171,8 @@
 &trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans  &mkp MB3  &trans    &trans
 &trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans                              &trans
             >;
+
+            sensor-bindings = <&scroll_up_down>;
         };
 
         layer_9_Mouse {
@@ -180,6 +182,8 @@
 &trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans  &mkp MB3  &trans    &trans
 &trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans                              &trans
             >;
+
+            sensor-bindings = <&scroll_up_down>;
         };
     };
 };
