@@ -73,6 +73,26 @@
 
             tap-ms = <20>;
         };
+
+        mt_z: mod_tap_z {
+            compatible = "zmk,behavior-hold-tap";
+            label = "MOD_TAP_Z";
+            #binding-cells = <2>;
+            flavor = "balanced";
+            tapping-term-ms = <250>;
+            quick-tap-ms = <0>;
+            bindings = <&kp>, <&kp>;
+            hold-trigger-key-positions = <5 6 7 8 9 15 16 17 18 19 20 27 28 29 30 31 32 39 40 41>;
+        };
+
+        lt_k: layer_tap_k {
+            compatible = "zmk,behavior-hold-tap";
+            label = "LAYER_TAP_K";
+            #binding-cells = <2>;
+            flavor = "tap-preferred";
+            tapping-term-ms = <190>;
+            bindings = <&mo>, <&kp>;
+        };
     };
 
     keymap {
@@ -81,8 +101,8 @@
         default_layer_mac {
             bindings = <
 &kp Q                         &kp W             &kp E         &kp R               &kp T                                           &kp Y        &kp U  &kp I      &kp O    &lt 8 P
-&kp A                         &kp S             &kp D         &kp F               &kp G                       &lt 7 LEFT_BRACKET  &kp H        &kp J  &lt 6 K    &kp L    &lt 9 MINUS
-&mt LEFT_SHIFT Z              &kp X             &kp C         &kp V               &kp B        &kp GRAVE      &kp RIGHT_BRACKET   &kp N        &kp M  &kp COMMA  &kp DOT  &mt RIGHT_SHIFT SLASH
+&kp A                         &kp S             &kp D         &kp F               &kp G                       &lt 7 LEFT_BRACKET  &kp H        &kp J  &lt_k 6 K    &kp L    &lt 9 MINUS
+&mt_z LEFT_SHIFT Z              &kp X             &kp C         &kp V               &kp B        &kp GRAVE      &kp RIGHT_BRACKET   &kp N        &kp M  &kp COMMA  &kp DOT  &mt RIGHT_SHIFT SLASH
 &mt LEFT_SHIFT LC(LG(SPACE))  &kp LEFT_CONTROL  &kp LEFT_ALT  &mt LEFT_GUI LANG2  &lt 2 LANG1  &lt 3 SPACE    &lt 4 BACKSPACE     &lt 5 ENTER                             &kp SEMICOLON
             >;
 
@@ -92,8 +112,8 @@
         layer_1_win {
             bindings = <
 &kp Q             &kp W           &kp E         &kp R               &kp T                                           &kp Y        &kp U  &kp I      &kp O    &lt 8 P
-&kp A             &kp S           &kp D         &kp F               &kp G                       &lt 7 LEFT_BRACKET  &kp H        &kp J  &lt 6 K    &kp L    &lt 9 MINUS
-&mt LEFT_SHIFT Z  &kp X           &kp C         &kp V               &kp B        &kp GRAVE      &kp RIGHT_BRACKET   &kp N        &kp M  &kp COMMA  &kp DOT  &mt RIGHT_SHIFT SLASH
+&kp A             &kp S           &kp D         &kp F               &kp G                       &lt 7 LEFT_BRACKET  &kp H        &kp J  &lt_k 6 K    &kp L    &lt 9 MINUS
+&mt_z LEFT_SHIFT Z  &kp X           &kp C         &kp V               &kp B        &kp GRAVE      &kp RIGHT_BRACKET   &kp N        &kp M  &kp COMMA  &kp DOT  &mt RIGHT_SHIFT SLASH
 &kp LEFT_CONTROL  &kp LEFT_SHIFT  &kp LEFT_GUI  &mt LEFT_ALT LANG2  &lt 2 LANG1  &lt 3 SPACE    &lt 4 BACKSPACE     &lt 5 ENTER                             &kp SEMICOLON
             >;
 
